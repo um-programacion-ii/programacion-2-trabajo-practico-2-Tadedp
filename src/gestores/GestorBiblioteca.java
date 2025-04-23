@@ -1,5 +1,6 @@
 package src.gestores;
 
+import src.enums.CategoriaRecurso;
 import src.enums.FormatoNotificacion;
 import src.modelos.*;
 
@@ -62,8 +63,8 @@ public class GestorBiblioteca {
         return gestorRecursos.getRecursos();
     }
 
-    public RecursoDigital agregarRecurso(String tipoRecurso, String titulo, String autor, String paramStringRecurso, int paramIntRecurso) {
-        return gestorRecursos.agregar(tipoRecurso, titulo, autor, paramStringRecurso, paramIntRecurso);
+    public RecursoDigital agregarRecurso(CategoriaRecurso categoriaRecurso, String titulo, String autor, String paramStringRecurso, int paramIntRecurso) {
+        return gestorRecursos.agregar(categoriaRecurso, titulo, autor, paramStringRecurso, paramIntRecurso);
     }
 
     public RecursoDigital eliminarRecurso(long id) {

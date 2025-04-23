@@ -1,5 +1,6 @@
 package src.modelos;
 
+import src.enums.CategoriaRecurso;
 import src.enums.EstadoRecurso;
 import src.interfaces.Prestable;
 import src.interfaces.Renovable;
@@ -11,15 +12,15 @@ public class Revista extends RecursoDigital implements Prestable, Renovable {
     private boolean disponible;
     private boolean renovable;
 
-    public Revista(long id, String titulo, String autor) {
-        super(id, titulo, autor);
+    public Revista(CategoriaRecurso categoriaRecurso, long id, String titulo, String autor) {
+        super(id, titulo, autor, categoriaRecurso);
         this.vecesPrestado = 0;
         this.disponible = true;
         this.renovable = true;
     }
 
-    public Revista(long id, String titulo, String autor, String categoria, int numero) {
-        super(id, titulo, autor);
+    public Revista(CategoriaRecurso categoriaRecurso, long id, String titulo, String autor, String categoria, int numero) {
+        super(id, titulo, autor, categoriaRecurso);
         this.categoria = categoria;
         this.numero = numero;
         this.vecesPrestado = 0;

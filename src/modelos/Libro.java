@@ -1,5 +1,6 @@
 package src.modelos;
 
+import src.enums.CategoriaRecurso;
 import src.enums.EstadoRecurso;
 import src.interfaces.Prestable;
 import src.interfaces.Renovable;
@@ -11,15 +12,15 @@ public class Libro extends RecursoDigital implements Prestable, Renovable {
     private boolean disponible;
     private boolean renovable;
 
-    public Libro(long id, String titulo, String autor) {
-        super(id, titulo, autor);
+    public Libro(CategoriaRecurso categoriaRecurso, long id, String titulo, String autor) {
+        super(id, titulo, autor, categoriaRecurso);
         this.vecesPrestado = 0;
         this.disponible = true;
         this.renovable = true;
     }
 
-    public Libro(long id, String titulo, String autor, int paginas, String genero) {
-        super(id, titulo, autor);
+    public Libro(CategoriaRecurso categoriaRecurso, long id, String titulo, String autor, int paginas, String genero) {
+        super(id, titulo, autor, categoriaRecurso);
         this.paginas = paginas;
         this.genero = genero;
         this.vecesPrestado = 0;

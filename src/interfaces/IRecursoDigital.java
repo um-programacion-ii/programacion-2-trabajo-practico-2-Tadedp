@@ -1,5 +1,6 @@
 package src.interfaces;
 
+import src.enums.CategoriaRecurso;
 import src.enums.EstadoRecurso;
 
 public interface IRecursoDigital {
@@ -7,5 +8,6 @@ public interface IRecursoDigital {
     String getAutor();
     long getId();
     EstadoRecurso getEstadoRecurso();
+    CategoriaRecurso getCategoriaRecurso();
     void actualizarEstado (EstadoRecurso estadoRecurso);
 }
