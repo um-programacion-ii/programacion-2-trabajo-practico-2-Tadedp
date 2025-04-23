@@ -1,5 +1,6 @@
 package src.CLI;
 
+import src.enums.CategoriaRecurso;
 import src.enums.FormatoNotificacion;
 import src.gestores.GestorBiblioteca;
 import src.modelos.Notificacion;
@@ -244,29 +245,29 @@ public class Consola {
                         RecursoDigital recurso = null;
 
                         if (inputTipo == 1) {
-                            String tipoRecurso = "Libro";
+                            CategoriaRecurso categoriaRecurso = CategoriaRecurso.LIBRO;
                             System.out.print("Ingrese el género del libro: ");
                             String genero = scanner.nextLine();
                             System.out.print("Ingrese el número de páginas del libro: ");
                             int paginas = Integer.parseInt(scanner.nextLine());
 
-                            recurso = gestorBiblioteca.agregarRecurso(tipoRecurso, titulo, autor, genero, paginas);
+                            recurso = gestorBiblioteca.agregarRecurso(categoriaRecurso, titulo, autor, genero, paginas);
                         } else if (inputTipo == 2) {
-                            String tipoRecurso = "Revista";
+                            CategoriaRecurso categoriaRecurso = CategoriaRecurso.REVISTA;
                             System.out.print("Ingrese la categoría de la revista: ");
                             String categoria = scanner.nextLine();
                             System.out.print("Ingrese el número de la revista: ");
                             int numero = Integer.parseInt(scanner.nextLine());
 
-                            recurso = gestorBiblioteca.agregarRecurso(tipoRecurso, titulo, autor, categoria, numero);
+                            recurso = gestorBiblioteca.agregarRecurso(categoriaRecurso, titulo, autor, categoria, numero);
                         } else if (inputTipo == 3) {
-                            String tipoRecurso = "Audiolibro";
+                            CategoriaRecurso categoriaRecurso = CategoriaRecurso.AUDIOLIBRO;
                             System.out.print("Ingrese el narrador del audiolibro: ");
                             String narrador = scanner.nextLine();
                             System.out.print("Ingrese la duración en minutos del audiolibro: ");
                             int duracionMin = Integer.parseInt(scanner.nextLine());
 
-                            recurso = gestorBiblioteca.agregarRecurso(tipoRecurso, titulo, autor, narrador, duracionMin);
+                            recurso = gestorBiblioteca.agregarRecurso(categoriaRecurso, titulo, autor, narrador, duracionMin);
                         } else {
                             System.out.println("ERROR: Opción inválida. Intente nuevamente.");
                         }

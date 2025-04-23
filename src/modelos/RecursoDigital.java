@@ -1,5 +1,6 @@
 package src.modelos;
 
+import src.enums.CategoriaRecurso;
 import src.enums.EstadoRecurso;
 import src.interfaces.IRecursoDigital;
 
@@ -8,15 +9,17 @@ public abstract class RecursoDigital implements IRecursoDigital {
     private String titulo;
     private String autor;
     private EstadoRecurso estadoRecurso;
+    private CategoriaRecurso categoriaRecurso;
 
     public RecursoDigital() {
     }
 
-    public RecursoDigital(long id, String titulo, String autor) {
+    public RecursoDigital(long id, String titulo, String autor, CategoriaRecurso categoriaRecurso) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.estadoRecurso = EstadoRecurso.DISPONIBLE;
+        this.categoriaRecurso = categoriaRecurso;
     }
 
     @Override
@@ -37,6 +40,11 @@ public abstract class RecursoDigital implements IRecursoDigital {
     @Override
     public EstadoRecurso getEstadoRecurso() {
         return estadoRecurso;
+    }
+
+    @Override
+    public CategoriaRecurso getCategoriaRecurso() {
+        return categoriaRecurso;
     }
 
     @Override

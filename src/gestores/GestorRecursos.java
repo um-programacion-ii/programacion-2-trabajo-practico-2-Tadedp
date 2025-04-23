@@ -1,5 +1,6 @@
 package src.gestores;
 
+import src.enums.CategoriaRecurso;
 import src.modelos.*;
 
 import java.util.ArrayList;
@@ -23,13 +24,13 @@ public class GestorRecursos {
         return recursos;
     }
 
-    public RecursoDigital agregar(String tipoRecurso, String titulo, String autor, String paramStringRecurso, int paramIntRecurso) {
+    public RecursoDigital agregar(CategoriaRecurso categoriaRecurso, String titulo, String autor, String paramStringRecurso, int paramIntRecurso) {
         long nuevoId = contadorRecursos + 1;
         RecursoDigital nuevoRecurso;
-        switch (tipoRecurso) {
-            case "Libro" -> nuevoRecurso = new Libro(nuevoId, titulo, autor, paramIntRecurso, paramStringRecurso);
-            case "Revista" -> nuevoRecurso = new Revista(nuevoId, titulo, autor, paramStringRecurso, paramIntRecurso);
-            case "Audiolibro" -> nuevoRecurso = new Audiolibro(nuevoId, titulo, autor, paramIntRecurso, paramStringRecurso);
+        switch (categoriaRecurso) {
+            case CategoriaRecurso.LIBRO -> nuevoRecurso = new Libro(categoriaRecurso, nuevoId, titulo, autor, paramIntRecurso, paramStringRecurso);
+            case CategoriaRecurso.REVISTA -> nuevoRecurso = new Revista(categoriaRecurso, nuevoId, titulo, autor, paramStringRecurso, paramIntRecurso);
+            case CategoriaRecurso.AUDIOLIBRO -> nuevoRecurso = new Audiolibro(categoriaRecurso, nuevoId, titulo, autor, paramIntRecurso, paramStringRecurso);
             default -> nuevoRecurso = null;
         }
         recursos.add(nuevoRecurso);

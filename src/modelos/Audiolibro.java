@@ -1,5 +1,6 @@
 package src.modelos;
 
+import src.enums.CategoriaRecurso;
 import src.enums.EstadoRecurso;
 import src.interfaces.Prestable;
 
@@ -9,14 +10,14 @@ public class Audiolibro extends RecursoDigital implements Prestable {
     private long vecesPrestado;
     private boolean disponible;
 
-    public Audiolibro(long id, String titulo, String autor) {
-        super(id, titulo, autor);
+    public Audiolibro(CategoriaRecurso categoriaRecurso, long id, String titulo, String autor) {
+        super(id, titulo, autor, categoriaRecurso);
         this.vecesPrestado = 0;
         this.disponible = true;
     }
 
-    public Audiolibro(long id, String titulo, String autor, int duracionMin, String narrador) {
-        super(id, titulo, autor);
+    public Audiolibro(CategoriaRecurso categoriaRecurso, long id, String titulo, String autor, int duracionMin, String narrador) {
+        super(id, titulo, autor, categoriaRecurso);
         this.duracionMin = duracionMin;
         this.narrador = narrador;
         this.vecesPrestado = 0;
