@@ -1,6 +1,7 @@
 package src.gestores;
 
 import src.enums.CategoriaRecurso;
+import src.enums.EstadoRecurso;
 import src.modelos.*;
 
 import java.util.ArrayList;
@@ -57,6 +58,18 @@ public class GestorRecursos {
     public List<RecursoDigital> buscarPorAutor(String autor) {
         return recursos.stream()
                 .filter(recurso -> recurso.getAutor().equals(autor) || recurso.getAutor().startsWith(autor))
+                .collect(Collectors.toList());
+    }
+
+    public List<RecursoDigital> buscarPorCategoria(CategoriaRecurso categoriaRecurso) {
+        return recursos.stream()
+                .filter(recurso -> recurso.getCategoriaRecurso() == categoriaRecurso)
+                .collect(Collectors.toList());
+    }
+
+    public List<RecursoDigital> buscarPorEstado(EstadoRecurso estadoRecurso) {
+        return recursos.stream()
+                .filter(recurso -> recurso.getEstadoRecurso() == estadoRecurso)
                 .collect(Collectors.toList());
     }
 

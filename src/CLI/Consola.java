@@ -1,12 +1,14 @@
 package src.CLI;
 
 import src.enums.CategoriaRecurso;
+import src.enums.EstadoRecurso;
 import src.enums.FormatoNotificacion;
 import src.gestores.GestorBiblioteca;
 import src.modelos.Notificacion;
 import src.modelos.RecursoDigital;
 import src.modelos.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -188,7 +190,9 @@ public class Consola {
                                     Puede buscar por:
                                     1- Título
                                     2- Autor
-                                    Seleccione una opción (1-2):\s""");
+                                    3- Categoría
+                                    4- Estado
+                                    Seleccione una opción (1-4):\s""");
 
                     int inputBusqueda;
                     try {
@@ -214,6 +218,77 @@ public class Consola {
 
                         if (recursos.isEmpty()) {
                             System.out.println("Autor '" + autor + "' no encontrado.");
+                        } else {
+                            System.out.println("Recursos encontrados: " + recursos);
+                        }
+                    } else if (inputBusqueda == 3) {
+                        System.out.print("""
+                                    Puede agregar:
+                                    1- Libro
+                                    2- Revista
+                                    3- Audiolibro
+                                    Seleccione una opción (1-3):\s""");
+
+                        int inputTipo;
+                        try {
+                            inputTipo = Integer.parseInt(scanner.nextLine());
+                        } catch (NumberFormatException exception) {
+                            inputTipo = 0;
+                        }
+
+                        List<RecursoDigital> recursos = new ArrayList<>();
+                        String categoria = "";
+                        if (inputTipo == 1) {
+                            recursos = gestorBiblioteca.buscarRecursosPorCategoria(CategoriaRecurso.LIBRO);
+                            categoria = "LIBRO";
+                        } else if (inputTipo == 2) {
+                            recursos = gestorBiblioteca.buscarRecursosPorCategoria(CategoriaRecurso.REVISTA);
+                            categoria = "REVISTA";
+                        } else if (inputTipo == 3) {
+                            recursos = gestorBiblioteca.buscarRecursosPorCategoria(CategoriaRecurso.AUDIOLIBRO);
+                            categoria = "AUDIOLIBRO";
+                        } else {
+                            System.out.println("ERROR: Opción inválida. Intente nuevamente.");
+                        }
+
+                        if (recursos.isEmpty()) {
+                            System.out.println("Recursos no encontrados en la categoría '" + categoria + "'.");
+                        } else {
+                            System.out.println("Recursos encontrados: " + recursos);
+                        }
+
+                    } else if (inputBusqueda == 4) {
+                        System.out.print("""
+                                    Puede agregar:
+                                    1- Disponible
+                                    2- Prestado
+                                    3- Reservado
+                                    Seleccione una opción (1-3):\s""");
+
+                        int inputEstado;
+                        try {
+                            inputEstado = Integer.parseInt(scanner.nextLine());
+                        } catch (NumberFormatException exception) {
+                            inputEstado = 0;
+                        }
+
+                        List<RecursoDigital> recursos = new ArrayList<>();
+                        String estado = "";
+                        if (inputEstado == 1) {
+                            recursos = gestorBiblioteca.buscarRecursosPorEstado(EstadoRecurso.DISPONIBLE);
+                            estado = "DISPONIBLE";
+                        } else if (inputEstado == 2) {
+                            recursos = gestorBiblioteca.buscarRecursosPorEstado(EstadoRecurso.RESERVADO);
+                            estado = "RESERVADO";
+                        } else if (inputEstado == 3) {
+                            recursos = gestorBiblioteca.buscarRecursosPorEstado(EstadoRecurso.RESERVADO);
+                            estado = "RESERVADO";
+                        } else {
+                            System.out.println("ERROR: Opción inválida. Intente nuevamente.");
+                        }
+
+                        if (recursos.isEmpty()) {
+                            System.out.println("Recursos no encontrados con el estado '" + estado + "'.");
                         } else {
                             System.out.println("Recursos encontrados: " + recursos);
                         }
