@@ -1,6 +1,7 @@
 package src.gestores;
 
 import src.enums.CategoriaRecurso;
+import src.enums.EstadoRecurso;
 import src.enums.FormatoNotificacion;
 import src.modelos.*;
 
@@ -77,6 +78,14 @@ public class GestorBiblioteca {
 
     public List<RecursoDigital> buscarRecursosPorAutor(String autor) {
         return gestorRecursos.buscarPorAutor(autor);
+    }
+
+    public List<RecursoDigital> buscarRecursosPorCategoria(CategoriaRecurso categoriaRecurso) {
+        return gestorRecursos.buscarPorCategoria(categoriaRecurso);
+    }
+
+    public List<RecursoDigital> buscarRecursosPorEstado(EstadoRecurso estadoRecurso) {
+        return gestorRecursos.buscarPorEstado(estadoRecurso);
     }
 
     public RecursoDigital prestar(long id){
